@@ -10,6 +10,10 @@ public class Pessoa {
 	private String dataNascimento;
 	private int telefone;
 	
+	public Pessoa() {
+		
+	}
+	
 	public Pessoa(String nomeCompleto, String usuarioLogin, String senhaLogin, String email, String cidade,
 			String estado, String dataNascimento, int telefone) {
 		this.nomeCompleto = nomeCompleto;

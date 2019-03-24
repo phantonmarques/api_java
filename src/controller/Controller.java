@@ -1,11 +1,49 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import entidade.Pessoa;
+import persistencia.PessoaDAO;
 
 public class Controller {
-	ArrayList<Pessoa> listaPessoas = new ArrayList<>();
+	private static List<Pessoa> listaPessoas = new ArrayList<>();
 	
-	//public static 
+	
+
+	public static void AddPessoa(Pessoa pessoa) {
+		listaPessoas.add(pessoa);
+	}
+
+	public static List<Pessoa> getListaAluno() {
+		return listaPessoas;
+	}
+	
+	public static boolean autenticacaoUsuario (String usuario, String senha) {
+		Pessoa p = new Pessoa();
+		p.setUsuarioLogin(usuario);
+		p.setSenhaLogin(senha);
+		
+		PessoaDAO aut = new PessoaDAO();
+		Pessoa validaExistencia = aut.autenticarUsuario(p);
+		if (validaExistencia != null ) {
+			return true;
+		}
+		return false;
+		
+	}
+
+	public static String getArrayJsonAut(String usuario, String senha) {
+		Pessoa p = new Pessoa();
+		p.setUsuarioLogin(usuario);
+		p.setSenhaLogin(senha);
+
+		// Passando de ArrayList para Json(String)
+		Gson gson = new GsonBuilder().create();
+		return gson.toJson(p);
+
+	}
 }
