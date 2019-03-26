@@ -12,8 +12,6 @@ import persistencia.PessoaDAO;
 public class Controller {
 	private static List<Pessoa> listaPessoas = new ArrayList<>();
 	
-	
-
 	public static void AddPessoa(Pessoa pessoa) {
 		listaPessoas.add(pessoa);
 	}
@@ -35,15 +33,9 @@ public class Controller {
 		return false;
 		
 	}
-
-	public static String getArrayJsonAut(String usuario, String senha) {
-		Pessoa p = new Pessoa();
-		p.setUsuarioLogin(usuario);
-		p.setSenhaLogin(senha);
-
-		// Passando de ArrayList para Json(String)
-		Gson gson = new GsonBuilder().create();
-		return gson.toJson(p);
-
+	
+	public static void validaAutenticacao(String autentica[]) {
+		
 	}
+
 }
